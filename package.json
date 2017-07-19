@@ -1,0 +1,26 @@
+{
+  "name": "blwol",
+  "version": "1.0.0",
+  "description": "Brainlab Wake on Lan website",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "stylus source/stylesheets/index.styl -o static/css",
+    "watch-css": "stylus source/stylesheets/index.styl -o static/css -w",
+    "clean": "rm -rf static\\css && mkdir static\\css",
+    "build": "npm run clean && npm run build-css",
+    "watch": "npm run clean && npm run watch-css & nodemon server -e js,jade",
+    "start": "node server"
+  },
+  "keywords": [
+    "wol"
+  ],
+  "author": "ricardo.gomes",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3",
+    "jade": "^1.11.0",
+    "morgan": "^1.8.2",
+    "nodemon": "^1.9.2",
+    "stylus": "^0.54.5"
+  }
+}
