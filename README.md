@@ -1,2 +1,2 @@
 # wolweb2
-AngularJS+EF implementation of wolweb
+Nodejs&express implementation of wolweb
