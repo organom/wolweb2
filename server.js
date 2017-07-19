@@ -20,9 +20,10 @@ app.get('/', function (req, res, next) {
 
 
 app.get('/machines', function (req, res, next) {
+    var file = "computers.json";
     var response;
     res.setHeader('Content-Type', 'application/json');
-    if (fs.existsSync("computers.json")) {
+    if (fs.existsSync(file)) {
         fs.readFile(file, 'utf8', function (err, data) {
             if (err) throw err;
             if(data.length != 0)
