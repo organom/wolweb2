@@ -3,7 +3,7 @@ var express = require('express')
   , app = express()
   , template = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
   , fs = require('fs')
-  , wol = require('./wake_on_lan.js')
+  , wol = require('node-wol')
 
 
 app.use(logger('dev'))
