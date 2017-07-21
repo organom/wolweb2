@@ -9,9 +9,21 @@ var express = require('express')
 app.use(logger('dev'))
 app.use(express.static(__dirname + '/static'))
 
+function getComputers() {
+  var file = "static/computers.json";
+  var computers = "";
+  if (fs.existsSync(file)) {
+    var data = fs.readFileSync(file, 'utf8');
+    if(data) {
+      computers = JSON.parse(data);
+    }
+  }
+  return computers;
+}
+
 app.get('/', function (req, res, next) {
   try {
-    var html = template({ title: 'Home' })
+    var html = template({ computers: getComputers() })
     res.send(html)
   } catch (e) {
     next(e)
@@ -19,22 +31,11 @@ app.get('/', function (req, res, next) {
 })
 
 
-app.get('/machines', function (req, res, next) {
-    var file = "computers.json";
-    var response;
-    res.setHeader('Content-Type', 'application/json');
-    if (fs.existsSync(file)) {
-        fs.readFile(file, 'utf8', function (err, data) {
-            if (err) throw err;
-            if(data.length != 0)
-            {
-              response = JSON.parse(data);
-            }
-        });
-    }
-    res.end(JSON.stringify(response));
+app.get('/add', function (req, res, next) {
 })
 
+app.get('/wakeall', function (req, res, next) {
+})
 
 app.listen(process.env.PORT || 3002, function () {
   console.log('Listening on http://localhost:' + (process.env.PORT || 3002))

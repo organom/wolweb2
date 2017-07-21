@@ -2,19 +2,15 @@ doctype html
 html
   head
     link(rel='stylesheet', href='/css/index.css')
-    title BL WoL
+    title Web WoL
   body
     .header
       h1.page-title Web WoL
 
     ul.nav
-      li: a(href='/machines') Machines
-      li: a(href='/add') Add New
+      li: a(href='/') Machines
       li: a(href='/wakeall') Wake all
-      li: a(href='/about') About
-          
+      li: a(href='/add') Add New
+
     .main-content
       block content
-
-    .footer
-      p Copyright © 2017  organom

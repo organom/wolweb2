@@ -1,3 +1,7 @@
-{
-  "name": "blwol"
-}
+[ 
+    { "hostname": "computer01", "macaddress": "18037340ea81", "group": "garage"},
+    { "hostname": "computer02", "macaddress": "63237340ea81", "group": "living room"},
+    { "hostname": "computer03", "macaddress": "63237340ea81", "group": "living room"},
+    { "hostname": "computer04", "macaddress": "63237340ea81", "group": "garage"},
+    { "hostname": "computer05", "macaddress": "63237340ea81", "group": "mobile"}
+]
