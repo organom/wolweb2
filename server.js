@@ -4,14 +4,13 @@ var express = require('express')
   , template = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
   , fs = require('fs')
   , wol = require('node-wol')
-
+  , file = "static/computers.json"
+  , computers = ''
 
 app.use(logger('dev'))
 app.use(express.static(__dirname + '/static'))
 
 function getComputers() {
-  var file = "static/computers.json";
-  var computers = "";
   if (fs.existsSync(file)) {
     var data = fs.readFileSync(file, 'utf8');
     if(data) {
@@ -32,9 +31,19 @@ app.get('/', function (req, res, next) {
 
 
 app.get('/add', function (req, res, next) {
+
 })
 
 app.get('/wakeall', function (req, res, next) {
+  for (var comp of getComputers()) {  
+    console.log('Waking up: ' + JSON.stringify(comp))
+    wol.wake(comp.macaddress, function(error) {
+      if(error) {
+        console.log('Error waking up: ' + comp.macaddress + ' - ' + error); 
+        return;
+      }
+    });
+  }
 })
 
 app.listen(process.env.PORT || 3002, function () {

@@ -1,6 +1,8 @@
 extend default
 
 block content
-  ul
+  table-content
     each machine in computers
-      li= machine.hostname
+      h1= machine.hostname
+      h3= machine.macaddress
+      h3= machine.status
