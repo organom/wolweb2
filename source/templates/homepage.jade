@@ -1,6 +1,20 @@
 extend default
 
 block content
-  ul
+  table(style="width: 100%")
+    thead
+      tr
+        th(style="width: 25%;text-align: left") Hostname
+        th(style="width: 25%;text-align: left") MacAddress
+        th(style="width: 15%;text-align: left") Group
+        th(style="width: 15%;text-align: left") Status
+        th
+    tbody
     each machine in computers
-      li= machine.hostname
+      tr
+        td= machine.hostname
+        td= machine.macaddress
+        td= machine.group
+        td -
+        td 
+          a(href="wake?id=#{machine.macaddress}") Wake
