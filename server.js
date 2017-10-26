@@ -1,7 +1,8 @@
 var express = require('express')
   , logger = require('morgan')
   , app = express()
-  , template = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
+  , homepage = require('jade').compileFile(__dirname + '/source/templates/homepage.jade')
+  , addcomputer = require('jade').compileFile(__dirname + '/source/templates/addcomputer.jade')
   , fs = require('fs')
   , wol = require('node-wol')
   , file = "static/computers.json"
@@ -11,6 +12,11 @@ app.use(logger('dev'))
 app.use(express.static(__dirname + '/static'))
 
 function getComputers() {
+<<<<<<< HEAD
+=======
+  var file = __dirname + "/static/computers.json";
+  var computers = "";
+>>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e
   if (fs.existsSync(file)) {
     var data = fs.readFileSync(file, 'utf8');
     if(data) {
@@ -22,19 +28,57 @@ function getComputers() {
 
 app.get('/', function (req, res, next) {
   try {
-    var html = template({ computers: getComputers() })
+    var html = homepage({ computers: getComputers() })
     res.send(html)
-  } catch (e) {
-    next(e)
+  } 
+  catch (ex) {
+    next(ex)
+  }
+})
+
+app.get('/add', function (req, res, next) {
+<<<<<<< HEAD
+
+=======
+  try
+  {
+    var html = addcomputer()
+    res.send(html)
+  }
+  catch(ex) {
+    next(ex)
+  }
+})
+
+app.get('/addcomputer', function (req, res, next) {
+  try
+  {
+    var file = __dirname + "/static/computers.json";
+    if (fs.existsSync(file)) {
+      var computers = getComputers();
+      computers[req.params];
+      fs.writeFileSync(file, computers, 'utf8');
+    }
+  }
+  catch(ex) {
+    next(ex)
+  }
+>>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e
+})
+
+app.get('/wake', function (req, res, next) {
+  try
+  { 
+    
+  }
+  catch(ex) {
+    next(ex)
   }
 })
 
 
-app.get('/add', function (req, res, next) {
-
-})
-
 app.get('/wakeall', function (req, res, next) {
+<<<<<<< HEAD
   for (var comp of getComputers()) {  
     console.log('Waking up: ' + JSON.stringify(comp))
     wol.wake(comp.macaddress, function(error) {
@@ -43,6 +87,14 @@ app.get('/wakeall', function (req, res, next) {
         return;
       }
     });
+=======
+  try
+  {
+
+  }
+  catch(ex) {
+    next(ex)
+>>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e
   }
 })
 

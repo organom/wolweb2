@@ -1,8 +1,28 @@
 extend default
 
 block content
+<<<<<<< HEAD
   table-content
     each machine in computers
       h1= machine.hostname
       h3= machine.macaddress
       h3= machine.status
+=======
+  table(style="width: 100%")
+    thead
+      tr
+        th(style="width: 25%;text-align: left") Hostname
+        th(style="width: 25%;text-align: left") MacAddress
+        th(style="width: 15%;text-align: left") Group
+        th(style="width: 15%;text-align: left") Status
+        th
+    tbody
+    each machine in computers
+      tr
+        td= machine.hostname
+        td= machine.macaddress
+        td= machine.group
+        td -
+        td 
+          a(href="wake?id=#{machine.macaddress}") Wake
+>>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e
