@@ -1,13 +1,6 @@
 extend default
 
 block content
-<<<<<<< HEAD
-  table-content
-    each machine in computers
-      h1= machine.hostname
-      h3= machine.macaddress
-      h3= machine.status
-=======
   table(style="width: 100%")
     thead
       tr
@@ -25,4 +18,3 @@ block content
         td -
         td 
           a(href="wake?id=#{machine.macaddress}") Wake
->>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e

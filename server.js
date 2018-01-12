@@ -12,13 +12,9 @@ app.use(logger('dev'))
 app.use(express.static(__dirname + '/static'))
 
 function getComputers() {
-<<<<<<< HEAD
-=======
-  var file = __dirname + "/static/computers.json";
-  var computers = "";
->>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e
-  if (fs.existsSync(file)) {
-    var data = fs.readFileSync(file, 'utf8');
+  var filepath = __dirname + file;
+  if (fs.existsSync(filepath)) {
+    var data = fs.readFileSync(filepath, 'utf8');
     if(data) {
       computers = JSON.parse(data);
     }
@@ -37,9 +33,6 @@ app.get('/', function (req, res, next) {
 })
 
 app.get('/add', function (req, res, next) {
-<<<<<<< HEAD
-
-=======
   try
   {
     var html = addcomputer()
@@ -53,17 +46,16 @@ app.get('/add', function (req, res, next) {
 app.get('/addcomputer', function (req, res, next) {
   try
   {
-    var file = __dirname + "/static/computers.json";
-    if (fs.existsSync(file)) {
-      var computers = getComputers();
+    var filepath = __dirname + file;
+    if (fs.existsSync(filepath)) {
+      getComputers();
       computers[req.params];
-      fs.writeFileSync(file, computers, 'utf8');
+      fs.writeFileSync(filepath, computers, 'utf8');
     }
   }
   catch(ex) {
     next(ex)
   }
->>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e
 })
 
 app.get('/wake', function (req, res, next) {
@@ -76,9 +68,7 @@ app.get('/wake', function (req, res, next) {
   }
 })
 
-
 app.get('/wakeall', function (req, res, next) {
-<<<<<<< HEAD
   for (var comp of getComputers()) {  
     console.log('Waking up: ' + JSON.stringify(comp))
     wol.wake(comp.macaddress, function(error) {
@@ -87,14 +77,6 @@ app.get('/wakeall', function (req, res, next) {
         return;
       }
     });
-=======
-  try
-  {
-
-  }
-  catch(ex) {
-    next(ex)
->>>>>>> a946a43d74dfddef784a0382542904cd4c9aeb6e
   }
 })
 
