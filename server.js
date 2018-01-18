@@ -49,9 +49,15 @@ app.get('/addcomputer', function (req, res, next) {
   {
     var filepath = __dirname + file;
     if (fs.existsSync(filepath)) {
-      getComputers();
-      computers[req.params];
-      fs.writeFileSync(filepath, computers, 'utf8');
+      console.log('Hostname: ' + req.query.hostname + 
+                  ' \n macaddress: ' + req.query.macaddress +
+                  ' \n group:' + req.query.group); 
+
+    //  computers[req.params];
+    //  fs.writeFileSync(filepath, computers, 'utf8');
+    
+      var html = homepage({ computers: getComputers() })
+      res.send(html)
     }
   }
   catch(ex) {
@@ -62,7 +68,13 @@ app.get('/addcomputer', function (req, res, next) {
 app.get('/wake', function (req, res, next) {
   try
   { 
-    
+    console.log('Waking up: ' + req.query.id)
+    // wol.wake(comp.macaddress, function(error) {
+    //  if(error) {
+    //    console.log('Error waking up: ' + comp.macaddress + ' - ' + error); 
+    //    return;
+    //  }
+    // });
   }
   catch(ex) {
     next(ex)
@@ -78,6 +90,8 @@ app.get('/wakeall', function (req, res, next) {
         return;
       }
     });
+    var html = homepage({ computers: computers })
+    res.send(html)
   }
 })
 
