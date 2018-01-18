@@ -8,7 +8,7 @@ body {
   font-family: 'Source Code Pro', monospace;
 }
 .header {
-  background: url("../images/background.jpg");
+  background: url("/images/background.jpg");
   background-position: center;
   background-size: cover;
 }

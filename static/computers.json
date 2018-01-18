@@ -1,7 +1,7 @@
 [ 
-    { "hostname": "computer01", "macaddress": "18037340ea81", "group": "garage", "status": "on"},
-    { "hostname": "computer02", "macaddress": "63237340ea81", "group": "living room", "status": "off"},
-    { "hostname": "computer03", "macaddress": "63237340ea81", "group": "living room", "status": "on"},
-    { "hostname": "computer04", "macaddress": "63237340ea81", "group": "garage", "status": "off"},
-    { "hostname": "computer05", "macaddress": "63237340ea81", "group": "mobile", "status": "off"}
+    { "hostname": "computer01", "macaddress": "63237340ea01", "group": "garage", "status": "on"},
+    { "hostname": "computer02", "macaddress": "63237340ea02", "group": "living room", "status": "off"},
+    { "hostname": "computer03", "macaddress": "63237340ea03", "group": "living room", "status": "on"},
+    { "hostname": "computer04", "macaddress": "63237340ea04", "group": "garage", "status": "off"},
+    { "hostname": "computer05", "macaddress": "63237340ea05", "group": "mobile", "status": "off"}
 ]

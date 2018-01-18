@@ -6,7 +6,7 @@ block content
       tr
         th(style="width: 25%;text-align: left") Hostname
         th(style="width: 25%;text-align: left") MacAddress
-        th(style="width: 15%;text-align: left") Group
+        th(style="width: 30%;text-align: left") Group
         th(style="width: 15%;text-align: left") Status
         th
     tbody
@@ -15,6 +15,9 @@ block content
         td= machine.hostname
         td= machine.macaddress
         td= machine.group
-        td -
+        td= machine.status
         td 
           a(href="wake?id=#{machine.macaddress}") Wake
+
+  a(href='/wakeall') WakeAll
+

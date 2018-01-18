@@ -5,7 +5,7 @@ var express = require('express')
   , addcomputer = require('jade').compileFile(__dirname + '/source/templates/addcomputer.jade')
   , fs = require('fs')
   , wol = require('node-wol')
-  , file = "static/computers.json"
+  , file = "/static/computers.json"
   , computers = ''
 
 app.use(logger('dev'))
@@ -13,6 +13,7 @@ app.use(express.static(__dirname + '/static'))
 
 function getComputers() {
   var filepath = __dirname + file;
+  console.log('computers file: ' + filepath); 
   if (fs.existsSync(filepath)) {
     var data = fs.readFileSync(filepath, 'utf8');
     if(data) {
