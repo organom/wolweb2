@@ -69,12 +69,14 @@ app.get('/wake', function (req, res, next) {
   try
   { 
     console.log('Waking up: ' + req.query.id)
-    // wol.wake(comp.macaddress, function(error) {
-    //  if(error) {
-    //    console.log('Error waking up: ' + comp.macaddress + ' - ' + error); 
-    //    return;
-    //  }
-    // });
+    wol.wake( req.query.id, function(error) {
+    if(error) {
+        console.log('Error waking up: ' + req.query.id + ' - ' + error); 
+        return;
+      }
+    });
+    var html = homepage({ computers: computers })
+    res.send(html)
   }
   catch(ex) {
     next(ex)
@@ -83,7 +85,7 @@ app.get('/wake', function (req, res, next) {
 
 app.get('/wakeall', function (req, res, next) {
   for (var comp of getComputers()) {  
-    console.log('Waking up: ' + JSON.stringify(comp))
+    console.log('Waking up: ' + comp.macaddress)
     wol.wake(comp.macaddress, function(error) {
       if(error) {
         console.log('Error waking up: ' + comp.macaddress + ' - ' + error); 
